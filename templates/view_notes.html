@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main %}
+{% for note in notes %}
+<div class="col-md-6">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <h3 class="mb-0">Turn {{note.turn_no}}</h3>
+        <div class="mb-1 text-body-secondary">During {{note.event}} </div>
+        <p class="mb-auto">{{note.note}}</p>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+        <img class="bd-placeholder-img" width=200px height=250px src= {{note.ref_img}} aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}

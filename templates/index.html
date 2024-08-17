@@ -5,6 +5,28 @@ Home
 {% endblock %}
 
 {% block main %}
+{% if session["user_id"] %}
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      {% for track in tracks %}
+      <tr>
+          <td><h1>{{track.track_name}}</h1></td>
+          <td><img class="bd-placeholder-img" width=600px height=500px src= {{track.track_img}} aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><a class="btn btn-lg btn-primary" href="{{ url_for('notes', track_name = track.track_name) }}" title="Add Note">✏️</a>
+            <a class="btn btn-lg btn-primary" href="{{ url_for('view_notes', track_name = track.track_name) }}" title="View Notes">📖</a></td>
+          <td><a class="btn btn-lg btn-primary" href="{{ url_for('retime', track_name = track.track_name) }}" title="Update Lap Time">{{track.lap_time}}</a></td>
+      </tr>      
+      {% endfor %}
+  </tbody>
+</table>
+
+{% else %}
 <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
@@ -16,29 +38,26 @@ Home
         <img class="bd-placeholder-img" width="100%" height="100%" src="static\Brake_zone.jpg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
         <div class="container">
           <div class="carousel-caption text-start">
-            <h1>Example headline.</h1>
-            <p class="opacity-75">Some representative placeholder content for the first slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+            <h1>Nail your braking points</h1>
+            <p class="opacity-75">Note your brake markers and slowly work to braking later.</p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <img class="bd-placeholder-img" width="100%" height="100%" src="static\Brake_zone.jpg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+        <img class="bd-placeholder-img" width="100%" height="100%" src="static\Apex.jpg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
         <div class="container">
           <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+            <h1>Hit very apex</h1>
+            <p>Record turning referances to nail turn in.</p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <img class="bd-placeholder-img" width="100%" height="100%" src="static\Brake_zone.jpg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+        <img class="bd-placeholder-img" width="100%" height="100%" src="static\Raceready.jpg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
         <div class="container">
           <div class="carousel-caption text-end">
-            <h1>One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide of this carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+            <h1>Get race-ready</h1>
+            <p>Record notes to prepare yourself for racing others on track</p>
           </div>
         </div>
       </div>
@@ -52,4 +71,5 @@ Home
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+  {% endif %}
 {% endblock %}

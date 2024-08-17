@@ -869,4 +869,17 @@ a:focus {
 .footer_section p a {
   color: inherit;
 }
-/*# sourceMappingURL=style.css.map */
+
+table {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+table th, table td {
+  padding: 0.75rem;
+  vertical-align: middle;
+}
+
+tbody tr:nth-of-type(odd) {
+  background-color: rgb(179, 208, 255, 0.3)
+}

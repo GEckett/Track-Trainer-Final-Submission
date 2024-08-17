@@ -28,17 +28,28 @@
                 <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                   <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
                 </a>
+                {% if session["user_id"] %}
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                  <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
-                  <li><a href="/compare" class="nav-link px-2 text-white">Compare</a></li>
+                  <li><a href="/tracks" class="nav-link px-2 text-secondary">Home</a></li>
                   <li><a href="/add" class="nav-link px-2 text-white">Add Track</a></li>
                   <li><a href="/FAQ" class="nav-link px-2 text-white">FAQs</a></li>
                 </ul>
-        
+
                 <div class="text-end">
-                  <button type="button" class="btn btn-outline-light me-2">Login</button>
-                  <button type="button" class="btn btn-warning">Sign-up</button>
+                  <a href="/logout"><button type="button" class="btn btn-outline-light me-2">Logout</button></a>
                 </div>
+
+                {% else %}
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                  <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
+                  <li><a href="/FAQ" class="nav-link px-2 text-white">FAQs</a></li>
+                </ul>
+
+                <div class="text-end">
+                  <a href="/login"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+                  <a href="/register"><button type="button" class="btn btn-warning">Sign-up</button></a>
+                </div>
+                {% endif %}
               </div>
             </div>
           </header>
@@ -46,27 +57,6 @@
         <main class="container py-5 text-center">
             {% block main %}{% endblock %}
         </main>
-
-        <footer class="mb-5">
-
-            <form action="https://validator.w3.org/check" class="text-center" enctype="multipart/form-data" method="post" target="_blank">
-                <input name="doctype" type="hidden" value="HTML5">
-                <input name="fragment" type="hidden">
-                <input alt="Validate" src="/static/I_heart_validator.png" type="image"> <!-- https://validator.w3.org/ -->
-            </form>
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    // Adapted from https://stackoverflow.com/a/10162353
-                    const html = '<!DOCTYPE ' +
-                    document.doctype.name +
-                    (document.doctype.publicId ? ' PUBLIC "' + document.doctype.publicId + '"' : '') +
-                    (!document.doctype.publicId && document.doctype.systemId ? ' SYSTEM' : '') +
-                    (document.doctype.systemId ? ' "' + document.doctype.systemId + '"' : '') +
-                    '>\n' + document.documentElement.outerHTML;
-                    document.querySelector('form[action="https://validator.w3.org/check"] > input[name="fragment"]').value = html;
-                });
-            </script>
-        </footer>
 
     </body>
 

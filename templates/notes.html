@@ -1,1 +1,24 @@
 {% extends "layout.html" %}
+
+{% block title %}
+Add Track
+{% endblock %}
+
+{% block main %}
+<form method="post">
+    <div class="mb-3">
+        <input class="form-control mx-auto w-auto" name="turn_no" placeholder="Turn No." type="text">
+    </div>
+    <div class="mb-3">
+        <input class="form-control mx-auto w-auto" name="event" placeholder="Braking, Turn In, Exit?" type="text">
+    </div>
+    <div class="mb-3">
+        <input class="form-control mx-auto w-auto" name="img" placeholder="Add referance image url" type="text">
+    </div>
+    <div class="mb-3">
+        <textarea id="w3review" name="note" rows="4" cols="50">Add your note here.</textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">Add Note</button>
+</form>
+<h1 class="error_msg">{{ error }}</h1>
+{% endblock %}

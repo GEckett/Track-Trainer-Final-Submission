@@ -5,5 +5,17 @@ Add Track
 {% endblock %}
 
 {% block main %}
-
+<form action="/add" method="post">
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="track_name" placeholder="Track Name" type="text">
+    </div>
+    <div class="mb-3">
+        <input class="form-control mx-auto w-auto" name="track_url" placeholder="Track Map Link" type="text">
+    </div>
+    <div class="mb-3">
+        <input class="form-control mx-auto w-auto" name="lap_time" placeholder="Lap Time (e.g 1:45.400)" type="text">
+    </div>
+    <button class="btn btn-primary" type="submit">Add Track</button>
+</form>
+<h1 class="error_msg">{{ error }}</h1>
 {% endblock %}
